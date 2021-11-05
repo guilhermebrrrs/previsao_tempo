@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_tempo/screens/Home/widgets/Body.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         title: Text("Previsão do Tempo"),
       ),
+      body: Body(),
     );
   }
 }
