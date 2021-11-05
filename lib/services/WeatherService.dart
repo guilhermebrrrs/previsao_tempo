@@ -1,7 +1,7 @@
 import 'package:previsao_tempo/entities/WeatherForecastItem.dart';
 
-class WeatherService {
-  List<WeatherForecastItem> getLastForecasts() {
+class WeatherForecastService {
+  List<WeatherForecastItem> getLatestForecasts() {
     return [
       WeatherForecastItem(
         description: 'description',
