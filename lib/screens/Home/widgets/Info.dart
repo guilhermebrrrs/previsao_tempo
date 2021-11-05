@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
-  final String cidade;
-  final String descricao;
-  final String temperaturaAtual;
-  final String temperaturaMaxima;
-  final String temperaturaMinima;
+  final String city;
+  final String description;
+  final String currentTemperature;
+  final String maxTemperature;
+  final String minTemperature;
 
   Info({
-    required this.cidade,
-    required this.descricao,
-    required this.temperaturaAtual,
-    required this.temperaturaMaxima,
-    required this.temperaturaMinima,
+    required this.city,
+    required this.description,
+    required this.currentTemperature,
+    required this.maxTemperature,
+    required this.minTemperature,
   }) : super();
 
   @override
@@ -24,7 +24,10 @@ class Info extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Switch(value: true, onChanged: (value) {}),
+                  Switch(
+                    value: true,
+                    onChanged: (value) {},
+                  ),
                   Icon(Icons.brightness_6_outlined),
                 ],
               ),
@@ -33,7 +36,7 @@ class Info extends StatelessWidget {
           ),
           Padding(
             child: Text(
-              cidade,
+              city,
               style: TextStyle(
                 color: Color.fromRGBO(39, 68, 114, 1),
                 fontSize: 22,
@@ -49,7 +52,7 @@ class Info extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        "$temperaturaAtual° C",
+                        "$currentTemperature° C",
                         style: TextStyle(
                           color: Color.fromRGBO(39, 68, 114, 1),
                           fontSize: 32,
@@ -67,14 +70,14 @@ class Info extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "Max: $temperaturaMaxima° C",
+                      "Max: $maxTemperature° C",
                       style: TextStyle(
                         color: Color.fromRGBO(39, 68, 114, 1),
                         fontSize: 16,
                       ),
                     ),
                     Text(
-                      "Min: $temperaturaMinima° C",
+                      "Min: $minTemperature° C",
                       style: TextStyle(
                         color: Color.fromRGBO(39, 68, 114, 1),
                         fontSize: 16,
@@ -91,13 +94,13 @@ class Info extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(5),
             child: Text(
-              descricao,
+              description,
               style: TextStyle(
                 color: Color.fromRGBO(39, 68, 114, 1),
                 fontSize: 16,
               ),
             ),
-          )
+          ),
         ],
       ),
       padding: EdgeInsets.all(5),

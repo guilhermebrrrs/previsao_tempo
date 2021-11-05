@@ -10,11 +10,11 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           Info(
-            cidade: "Itapetininga",
-            descricao: "Nublado",
-            temperaturaAtual: "10",
-            temperaturaMaxima: "20",
-            temperaturaMinima: "7",
+            city: "Itapetininga",
+            description: "Nublado",
+            currentTemperature: "10",
+            maxTemperature: "20",
+            minTemperature: "7",
           ),
         ],
       ),
