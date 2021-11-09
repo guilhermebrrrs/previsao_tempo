@@ -1,120 +1,23 @@
+import 'dart:convert';
+import 'package:http/http.dart';
+import 'package:previsao_tempo/Config.dart';
 import 'package:previsao_tempo/entities/WeatherForecastItem.dart';
 
 class WeatherForecastService {
-  List<WeatherForecastItem> getLatestForecasts() {
-    return [
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 12,
-        description: 'nublado',
-        maxTemperatureForecast: 17,
-        minTemperatureForecast: 10,
-        time: 'time',
-      ),
-      WeatherForecastItem(
-        averageTemperatureForecast: 22,
-        description: 'ensolarado',
-        maxTemperatureForecast: 29,
-        minTemperatureForecast: 20,
-        time: 'time',
-      ),
-    ];
+  Future<WeatherForecastItem?> getLatestForecasts(String? cityName) async {
+    final String uri = cityName != null || cityName != ""
+        ? Config.cityEndPoint + cityName!
+        : Config.cityEndPoint + "Itapetininga";
+
+    final Response response = await get(Uri.parse(uri));
+
+    if (response.statusCode == 400) return null;
+    if (response.statusCode == 200) {
+      Map<String, dynamic> it = json.decode(response.body);
+      WeatherForecastItem forecastItem = WeatherForecastItem.fromJson(it["results"]);
+
+      return forecastItem;
+    }
+    return null;
   }
 }

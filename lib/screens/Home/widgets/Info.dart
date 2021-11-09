@@ -20,26 +20,12 @@ class Info extends StatelessWidget {
     return Padding(
       child: Column(
         children: [
-          Row(
-            children: [
-              Row(
-                children: [
-                  Switch(
-                    value: true,
-                    onChanged: (value) {},
-                  ),
-                  Icon(Icons.brightness_6_outlined),
-                ],
-              ),
-            ],
-            mainAxisAlignment: MainAxisAlignment.end,
-          ),
           Padding(
             child: Text(
               city,
               style: TextStyle(
                 color: Color.fromRGBO(39, 68, 114, 1),
-                fontSize: 22,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -49,56 +35,66 @@ class Info extends StatelessWidget {
             child: Row(
               children: [
                 Padding(
-                  child: Row(
+                  child: Column(
                     children: [
-                      Text(
-                        "$currentTemperature° C",
-                        style: TextStyle(
-                          color: Color.fromRGBO(39, 68, 114, 1),
-                          fontSize: 32,
+                      Row(
+                        children: [
+                          Text(
+                            "$currentTemperature° C",
+                            style: TextStyle(
+                              color: Color.fromRGBO(39, 68, 114, 1),
+                              fontSize: 32,
+                            ),
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Text(
+                          description,
+                          style: TextStyle(
+                            color: Color.fromRGBO(39, 68, 114, 1),
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.center,
                   ),
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(2),
                 ),
                 VerticalDivider(
                   color: Color.fromRGBO(39, 68, 114, 1),
-                  thickness: 1,
+                  thickness: 2,
                 ),
                 Column(
                   children: [
-                    Text(
-                      "Max: $maxTemperature° C",
-                      style: TextStyle(
-                        color: Color.fromRGBO(39, 68, 114, 1),
-                        fontSize: 16,
+                    Padding(
+                      child: Text(
+                        "Max: $maxTemperature° C",
+                        style: TextStyle(
+                          color: Color.fromRGBO(39, 68, 114, 1),
+                          fontSize: 16,
+                        ),
                       ),
+                      padding: EdgeInsets.all(2),
                     ),
-                    Text(
-                      "Min: $minTemperature° C",
-                      style: TextStyle(
-                        color: Color.fromRGBO(39, 68, 114, 1),
-                        fontSize: 16,
+                    Padding(
+                      child: Text(
+                        "Min: $minTemperature° C",
+                        style: TextStyle(
+                          color: Color.fromRGBO(39, 68, 114, 1),
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
+                      padding: EdgeInsets.all(2),
+                    )
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ],
               mainAxisAlignment: MainAxisAlignment.center,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(5),
-            child: Text(
-              description,
-              style: TextStyle(
-                color: Color.fromRGBO(39, 68, 114, 1),
-                fontSize: 16,
-              ),
             ),
           ),
         ],
