@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:previsao_tempo/Config.dart';
+import 'package:previsao_tempo/helpers/Config.dart';
 import 'package:previsao_tempo/entities/WeatherForecastItem.dart';
 
 class WeatherForecastService {
